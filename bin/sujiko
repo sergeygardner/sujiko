@@ -1,0 +1,10 @@
+#!/usr/bin/env php
+<?php declare(strict_types=1);
+
+use App\Infrastructure\Service\ContextChangerService;
+
+require dirname(__DIR__, 1) . '/vendor/autoload.php';
+
+$contextChangerService = new ContextChangerService($argv);
+
+$contextChangerService->switch();

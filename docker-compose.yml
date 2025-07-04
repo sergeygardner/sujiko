@@ -1,0 +1,13 @@
+services:
+  php:
+    container_name: sujiko-php
+    build:
+      context: .
+    command: sh run.sh
+    environment:
+      TZ: "Europe/London"
+      XDEBUG_MODE: coverage
+    restart: always
+    tty: true
+    volumes:
+      - ./:/app:cached
