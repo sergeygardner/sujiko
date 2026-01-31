@@ -12,7 +12,7 @@ class PopulateToolTest extends TestCase
 {
     private ?PopulateTool $populateTool = null;
 
-    public static function data_provider(): Generator
+    public static function dataProvider(): Generator
     {
         yield '1_2' => [
             'arguments' => [1, 2],
@@ -57,7 +57,7 @@ class PopulateToolTest extends TestCase
     }
 
     /**
-     * @dataProvider data_provider
+     * @dataProvider dataProvider
      */
     public function testToGroupDTOCollection(
         array $arguments,

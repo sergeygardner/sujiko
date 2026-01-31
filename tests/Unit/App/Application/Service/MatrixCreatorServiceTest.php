@@ -20,7 +20,7 @@ class MatrixCreatorServiceTest extends TestCase
 {
     private ?MatrixCreatorService $matrixCreatorService = null;
 
-    public static function data_provider(): Generator
+    public static function dataProvider(): Generator
     {
         yield '9' => [
             'maxNumber' => 9,
@@ -170,7 +170,7 @@ class MatrixCreatorServiceTest extends TestCase
     }
 
     /**
-     * @dataProvider data_provider
+     * @dataProvider dataProvider
      */
     public function testCreateDullMatrix(
         int $maxNumber,

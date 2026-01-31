@@ -12,7 +12,7 @@ use PHPUnit\Framework\TestCase;
 
 class SimpleSolverContextTest extends TestCase
 {
-    public static function data_provider(): Generator
+    public static function dataProvider(): Generator
     {
         $table = new Console_Table();
         $table->addRow([5, 8, 7]);
@@ -34,7 +34,7 @@ class SimpleSolverContextTest extends TestCase
     }
 
     /**
-     * @dataProvider data_provider
+     * @dataProvider dataProvider
      */
     public function testSolve(
         ConsoleOptionService $consoleOptionService,

@@ -21,7 +21,7 @@ class FactoryServiceTest extends TestCase
 {
     private ?FactoryService $groupGetterService = null;
 
-    public static function group_data_provider(): Generator
+    public static function group_dataProvider(): Generator
     {
         yield '9_4-18-23_24-29-14-19' => [
             'maxNumber' => 9,
@@ -63,7 +63,7 @@ class FactoryServiceTest extends TestCase
     }
 
 
-    public static function group_index_data_provider(): Generator
+    public static function group_index_dataProvider(): Generator
     {
         yield '9_1-2_3-4-5_6-7-8-9' => [
             'maxNumber' => 9,
@@ -91,7 +91,7 @@ class FactoryServiceTest extends TestCase
         ];
     }
 
-    public static function tuple_data_provider(): Generator
+    public static function tuple_dataProvider(): Generator
     {
         $tuple1 = new TupleDTOCollection(
             [1, 2, 4, 5],
@@ -149,7 +149,7 @@ class FactoryServiceTest extends TestCase
     }
 
     /**
-     * @dataProvider group_data_provider
+     * @dataProvider group_dataProvider
      */
     public function testToGroupDTOCollection(
         int $maxNumber,
@@ -168,7 +168,7 @@ class FactoryServiceTest extends TestCase
     }
 
     /**
-     * @dataProvider group_index_data_provider
+     * @dataProvider group_index_dataProvider
      */
     public function testToGroupIndexDTOCollections(
         int $maxNumber,
@@ -187,7 +187,7 @@ class FactoryServiceTest extends TestCase
     }
 
     /**
-     * @dataProvider tuple_data_provider
+     * @dataProvider tuple_dataProvider
      */
     public function testToTupleDTOCollections(
         int $maxNumber,

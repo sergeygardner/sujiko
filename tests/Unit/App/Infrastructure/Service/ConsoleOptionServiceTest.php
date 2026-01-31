@@ -12,7 +12,7 @@ class ConsoleOptionServiceTest extends TestCase
     /**
      * @return Generator
      */
-    public static function data_provider(): Generator
+    public static function dataProvider(): Generator
     {
         $optionsBag = new OptionsBag();
         $optionsBag->maxNumber = [9];
@@ -30,28 +30,8 @@ class ConsoleOptionServiceTest extends TestCase
         ];
     }
 
-    public static function type_data_provider(): Generator
-    {
-        yield OptionsBag::MAX_NUMBER => [
-            'type' => OptionsBag::MAX_NUMBER,
-            'expectedType' => OptionsBag::TYPE_INT,
-        ];
-        yield OptionsBag::GROUP => [
-            'type' => OptionsBag::GROUP,
-            'expectedType' => OptionsBag::TYPE_INT_ARRAY,
-        ];
-        yield OptionsBag::GROUP_SUM => [
-            'type' => OptionsBag::GROUP_SUM,
-            'expectedType' => OptionsBag::TYPE_INT_ARRAY,
-        ];
-        yield OptionsBag::TUPLE => [
-            'type' => OptionsBag::TUPLE,
-            'expectedType' => OptionsBag::TYPE_INT_ARRAY,
-        ];
-    }
-
     /**
-     * @dataProvider data_provider
+     * @dataProvider dataProvider
      *
      * @param OptionsBag $options
      * @param int $expectedMaxNumber
@@ -80,20 +60,5 @@ class ConsoleOptionServiceTest extends TestCase
         self::assertEquals($expectedGroupSum, $consoleOptionService->getGroupSum());
         self::assertEquals($expectedGroups, $consoleOptionService->getGroups());
         self::assertEquals($expectedTuples, $consoleOptionService->getTuples());
-    }
-
-    /**
-     * @dataProvider type_data_provider
-     *
-     * @param string $type
-     * @param string $expectedType
-     *
-     * @return void
-     */
-    public function testGetArgumentType(
-        string $type,
-        string $expectedType,
-    ): void {
-        self::assertEquals($expectedType, OptionsBag::getArgumentType($type));
     }
 }
