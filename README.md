@@ -1,5 +1,5 @@
 # Sujiko's solution
-Version 1.0.0
+Version 1.0.1
 
 ## Sujiko
 Created in 2010, Sujiko was the first of the puzzles created by Kobayaashi Studios to feature in the puzzle pages of national newspapers.
@@ -63,20 +63,20 @@ XDEBUG_MODE=coverage vendor/phpunit/phpunit/phpunit --log-junit=report/phpunit-r
 ## Pint
 
 ```shell
-./vendor/bin/pint
+XDEBUG_MODE=off ./vendor/bin/pint
 ```
 
 ## PHPStan
 
 ```shell
-./vendor/bin/phpstan
+XDEBUG_MODE=off ./vendor/bin/phpstan
 ```
 
 
 ### Summary
 
 - All tests cover 100% of the code
-- PHPStan is passed on level 9
+- PHPStan is passed on level 10
 
 ## ToDo
 - Create a new feature for making a game

@@ -14,7 +14,7 @@ class InputCheckerServiceTest extends TestCase
 {
     private ?InputCheckerService $inputCheckerService = null;
 
-    public static function data_provider(): Generator
+    public static function dataProvider(): Generator
     {
 
         yield '9_10-8-27' => [
@@ -30,7 +30,7 @@ class InputCheckerServiceTest extends TestCase
     }
 
     /**
-     * @dataProvider data_provider
+     * @dataProvider dataProvider
      */
     public function testCheckSum(
         int $maxNumber,

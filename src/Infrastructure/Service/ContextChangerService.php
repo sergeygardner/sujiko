@@ -14,17 +14,17 @@ use Throwable;
 /**
  *
  */
-final class ContextChangerService implements ContextChangerServiceInterface
+final readonly class ContextChangerService implements ContextChangerServiceInterface
 {
     /**
      * @var array<string, array<string, class-string>>
      */
-    private readonly array $contexts;
+    private array $contexts;
 
     /**
      * @param array<int, string> $arguments
      */
-    public function __construct(public readonly array $arguments)
+    public function __construct(public array $arguments)
     {
         $this->contexts = [
             'Simple' => [
@@ -103,19 +103,21 @@ final class ContextChangerService implements ContextChangerServiceInterface
      */
     private function prepareARGVByType(OptionsBag $carry, array $matches): OptionsBag
     {
-        $variableName = (string) preg_replace('#\d#', '', $matches[1]);
-        $variableCount = (int) str_replace($variableName, '', $matches[1]);
+        $value = null;
+        $match = $matches[1] ?? '';
 
-        $carry->{$variableName}[$variableCount] = match (OptionsBag::getArgumentType($variableName)) {
-            OptionsBag::TYPE_INT => (int) $matches[2],
-            OptionsBag::TYPE_INT_ARRAY => [
-                ...($carry->{$variableName}[$variableCount] ?? []),
-                (int) $matches[2],
-            ],
-            default => throw new WrongArgumentTypeDomainException(
-                sprintf('Argument [%s] type not supported', $variableName),
-            ),
-        };
+        if (isset($matches[2]) && is_numeric($matches[2])) {
+            $value = (int) $matches[2];
+        }
+
+        $variableName = (string) preg_replace('#\d#', '', $match);
+        $variableCount = (int) str_replace($variableName, '', $match);
+
+        $carry->setValue(
+            fieldName: $variableName,
+            iterator: $variableCount,
+            value: $value,
+        );
 
         return $carry;
     }

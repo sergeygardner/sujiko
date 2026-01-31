@@ -13,7 +13,7 @@ class GaussSumToolTest extends TestCase
 {
     private ?GaussSumTool $gaussSumTool = null;
 
-    public static function data_provider(): Generator
+    public static function dataProvider(): Generator
     {
         yield '9' => [
             'number' => 9,
@@ -28,7 +28,7 @@ class GaussSumToolTest extends TestCase
     }
 
     /**
-     * @dataProvider data_provider
+     * @dataProvider dataProvider
      */
     public function testToGroupDTOCollection(
         int $number,

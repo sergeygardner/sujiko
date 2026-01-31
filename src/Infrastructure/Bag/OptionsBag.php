@@ -2,6 +2,8 @@
 
 namespace App\Infrastructure\Bag;
 
+use App\Domain\Exception\WrongArgumentTypeDomainException;
+
 class OptionsBag
 {
     /**
@@ -33,11 +35,6 @@ class OptionsBag
      *
      */
     public const string TYPE_INT_ARRAY = 'int_array';
-
-    /**
-     *
-     */
-    public const mixed TYPE_UNDEFINED = null;
 
     /**
      *
@@ -78,12 +75,34 @@ class OptionsBag
     public array $tuple = [];
 
     /**
-     * @param string $argumentName
-     *
-     * @return string|null
+     * @throws WrongArgumentTypeDomainException
      */
-    public static function getArgumentType(string $argumentName): ?string
+    public function setValue(string $fieldName, int $iterator, int|null $value): void
     {
-        return self::RULES[$argumentName]['type'] ?? self::TYPE_UNDEFINED;
+        if (! property_exists($this, $fieldName)) {
+            throw new WrongArgumentTypeDomainException(
+                sprintf('Argument [%s] name is not supported', $fieldName),
+            );
+        }
+
+        if ($value === null) {
+            throw new WrongArgumentTypeDomainException(
+                sprintf('Argument [%s] value is not supported', $fieldName),
+            );
+        }
+
+        switch ($fieldName) {
+            case self::MAX_NUMBER:
+                $this->{$fieldName}[$iterator] = $value;
+                break;
+            case self::GROUP_SUM:
+            case self::GROUP:
+            case self::TUPLE:
+                $this->{$fieldName}[$iterator] = [
+                    ...($this->{$fieldName}[$iterator] ?? []),
+                    $value,
+                ];
+                break;
+        }
     }
 }

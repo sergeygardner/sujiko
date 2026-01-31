@@ -6,8 +6,8 @@ services:
     command: sh run.sh
     environment:
       TZ: "Europe/London"
-      XDEBUG_MODE: coverage
     restart: always
     tty: true
     volumes:
       - ./:/app:cached
+      - .docker/php.d/docker-php-ext-xdebug.ini:/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini:ro

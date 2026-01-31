@@ -17,7 +17,7 @@ class ResolverServiceTest extends TestCase
 {
     private ?ResolverService $resolverService = null;
 
-    public static function data_provider(): Generator
+    public static function dataProvider(): Generator
     {
         $tuple1 = new TupleDTOCollection(
             [1, 2, 4, 5],
@@ -171,7 +171,7 @@ class ResolverServiceTest extends TestCase
     }
 
     /**
-     * @dataProvider data_provider
+     * @dataProvider dataProvider
      */
     public function testCheckSum(
         MatrixDTOCollection $matrixDTOCollections,
