@@ -27,34 +27,6 @@ class OptionsBag
     public const string TUPLE = 'tuple';
 
     /**
-     *
-     */
-    public const string TYPE_INT = 'int';
-
-    /**
-     *
-     */
-    public const string TYPE_INT_ARRAY = 'int_array';
-
-    /**
-     *
-     */
-    private const array RULES = [
-        self::MAX_NUMBER => [
-            'type' => self::TYPE_INT,
-        ],
-        self::GROUP_SUM => [
-            'type' => self::TYPE_INT_ARRAY,
-        ],
-        self::GROUP => [
-            'type' => self::TYPE_INT_ARRAY,
-        ],
-        self::TUPLE => [
-            'type' => self::TYPE_INT_ARRAY,
-        ],
-    ];
-
-    /**
      * @var array<int, int>
      */
     public array $maxNumber = [];
